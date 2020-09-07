@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript">
+     var clevertap = {event:[], profile:[], account:[], onUserLogin:[], notifications:[], privacy:[]};
+ // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
+clevertap.account.push({"id": "W69-R97-695Z"});
+clevertap.privacy.push({optOut: false}); //set the flag to true, if the user of the device opts out of sharing their data
+clevertap.privacy.push({useIP: false}); //set the flag to true, if the user agrees to share their IP data
+ (function () {
+		 var wzrk = document.createElement('script');
+		 wzrk.type = 'text/javascript';
+		 wzrk.async = true;
+		 wzrk.src = ('https:' == document.location.protocol ? 'https://d2r1yp2w7bby2u.cloudfront.net' : 'http://static.clevertap.com') + '/js/a.js';
+		 var s = document.getElementsByTagName('script')[0];
+		 s.parentNode.insertBefore(wzrk, s);
+  })();
+  clevertap.notificationCallback = function(msg){
+      //raise the notification viewed and clicked events in the callback
+      clevertap.raiseNotificationViewed();
+      console.log(JSON.stringify(msg));//your custom rendering implementation here
+      var $button = jQuery("<button></button>");//element on whose click you want to raise the notification clicked event
+      $button.click(function(){
+         clevertap.raiseNotificationClicked();
+      });
+};
+
+
+
+
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 14%;
+  border-radius: 5%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+	</head>
+<body>
+<h2>Login Form</h2>
+
+<form >
+  <div class="imgcontainer">
+    <img src="image.png" alt="Image" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+        
+    <button type="submit">Login</button>
+    <p id="demo">PROFILE PUSH</p>
+
+<script>
+document.getElementById("demo").addEventListener("click", myFunction);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = clevertap.profile.push({
+ "Site": {
+   "Name": "xyz", // User's name
+   "Email": "xyz@example.com"
+ }
+});;
+}
+</script>
+
+
+
+ <p id="demo1"> onUSerLogin</p>
+
+<script>
+document.getElementById("demo1").addEventListener("click", myFunction1);
+
+function myFunction1() {
+  document.getElementById("demo1").innerHTML = clevertap.onUserLogin.push({
+ "Site": {
+   "Name": "abccc", // User's name
+   "Email": "abccc@example.com",
+   "identity": "3424"
+ }
+});;
+}
+</script>
+
+
+ <p id="demo2"> ADDED  TO CART </p>
+
+<script>
+document.getElementById("demo2").addEventListener("click", myFunction2);
+
+function myFunction2() {
+  document.getElementById("demo2").innerHTML = clevertap.event.push("Added To Cart", {
+  "Product name":"Casio Chronograph Watch",
+  "Category":"Mens Accessories",
+  "Price":59.99,
+});;
+}
+</script>
+
+
+ <p id="demo3"> CHARGED </p>
+
+<script>
+document.getElementById("demo3").addEventListener("click", myFunction3);
+
+function myFunction3() {
+  document.getElementById("demo3").innerHTML = clevertap.event.push("charged", {
+  "Product name":"Casio Chronograph Watch",
+  "Category":"Mens Accessories",
+  "Price":59.99,
+});;
+}
+
+
+
+
+
+
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
